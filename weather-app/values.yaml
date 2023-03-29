@@ -112,7 +112,7 @@ awsElasticBlockStore:
 
 ingressClassName: nginx
 rules: 
-  host: a2cdde827e6d54a528f338a9a9147c3c-783185334.us-east-1.elb.amazonaws.com
+  host: a82fa42cee85a44bf93890b300ffdd22-1094996862.us-east-1.elb.amazonaws.com
   http:
     paths:
       pathType: Prefix
