@@ -1,0 +1,33 @@
+name: Copy Dev to Prod
+
+on:
+  push:
+    branches:
+      - main # change this to your main branch name
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout dev code
+        uses: actions/checkout@v2
+        with:
+          repository: ArielDomchik/GitOps-dev # replace with your dev repository information
+          ref: main
+
+      - name: Upload code as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dev-code
+          path: ./
+
+      - name: Download code artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dev-code
+          path: ./prod-code
+
+      - name: Checkout prod code
+        uses: actions/checkout@v2
+        with:
+          repository: ArielDomchik/GitOps-prod # replace with your prod
