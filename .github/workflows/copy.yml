@@ -1,0 +1,47 @@
+name: Copy Dev to Prod
+
+on:
+  push:
+    branches:
+      - main # change this to your main branch name
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout dev code
+        uses: actions/checkout@v2
+        with:
+          ref: main # or replace with your dev branch name
+
+      - name: Upload code as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dev-code
+          path: ./
+
+      - name: Download code artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dev-code
+          path: ./prod-code
+
+      - name: Checkout prod code
+        uses: actions/checkout@v2
+        with:
+          ref: main # or replace with your prod branch name
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Copy code from dev to prod
+        run: cp -R ./prod-code/* ./
+        
+      - name: Commit changes
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git commit -a -m "Copy code from dev to prod"
+        
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
