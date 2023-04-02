@@ -6,12 +6,12 @@
 
 - How to update the submodule
 
-   `git submodule update --init`
-   `cd value`
-   `git checkout master`
-   `cd ..`
-   `git add value`
-   `git commit -m "Update value submodule`
+ 1. `git submodule update --init`
+ 2. `cd remote`
+ 3. `git checkout main`
+ 4. `cd ..`
+ 5. `git add remote`
+ 6. `git commit -m "Update remote submodule`
 
 
 -  AWS EBS CSI Driver (to attach Elastic block storage to pods in k8s with storage classes, pv and pvc)
@@ -19,6 +19,6 @@
 
 
 -  Ingress Nginx controller for k8s cluster
-   `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-    helm repo update
-    helm install nginx-ingress ingress-nginx/ingress-nginx --set controller.publishService.enabled=true`
+  1. `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
+  2. `helm repo update`
+  3. `helm install nginx-ingress ingress-nginx/ingress-nginx --set controller.publishService.enabled=true`
