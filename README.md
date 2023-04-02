@@ -6,12 +6,12 @@
 
 - How to update the submodule
 
-  `git submodule update --init
-   cd value
-   git checkout master
-   cd ..
-   git add value
-   git commit -m "Update value submodule`
+   `git submodule update --init`
+   `cd value`
+   `git checkout master`
+   `cd ..`
+   `git add value`
+   `git commit -m "Update value submodule`
 
 
 -  AWS EBS CSI Driver (to attach Elastic block storage to pods in k8s with storage classes, pv and pvc)
