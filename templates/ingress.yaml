@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: "a82fa42cee85a44bf93890b300ffdd22-1094996862.us-east-1.elb.amazonaws.com"
+  - host: {{ .Values.ingressDomain }}
     http:
       paths:
       - pathType: Prefix
@@ -17,7 +17,7 @@ spec:
             name: weather-app
             port:
               number: 80
-  - host: "a82fa42cee85a44bf93890b300ffdd22-1094996862.us-east-1.elb.amazonaws.com"
+  - host: {{ .Values.ingressDomain }}
     http:
       paths:
       - pathType: Prefix
